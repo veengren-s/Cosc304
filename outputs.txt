@@ -1,0 +1,79 @@
+Q1
+cname            CityState          
+---------------  -------------------
+John Doe         Detroit,MI         
+Russell Johnson  Hollywood,CA       
+Scott Charles    Huntington Beach,CA
+Joe Smithsonian  Iowa City,IA       
+Suzanne May      Iowa City,IA       
+Robert Dean      Morristown,NJ      
+Beth Rosebud     Muscatine,IA       
+Fred Smith       Springfield,IL     
+Shannon Rose     Wyandotte,MI       
+
+Q2
+SUM(amount)  COUNT(DISTINCT pid)  COUNT(DISTINCT sid)
+-----------  -------------------  -------------------
+        121                    4                   10
+
+Q3
+cname            address              pname            amount
+---------------  -------------------  ---------------  ------
+Steve Stevenson  24 Michigan Ave.     Swiss Chocolate       5
+Russell Johnson  1 Hollywood Drive    Wooden Chair         13
+Russell Johnson  1 Hollywood Drive    Swiss Chocolate       4
+Russell Johnson  1 Hollywood Drive    Wooden Chair          1
+Russell Johnson  1 Hollywood Drive    Swiss Chocolate       3
+Russell Johnson  1 Hollywood Drive    Chocolate Bar        25
+Scott Charles    748 Mayflower        Wooden Chair          5
+Robert Dean      234 Greenwood Drive  Teddy Bear            1
+Robert Dean      234 Greenwood Drive  Chocolate Bar        10
+
+Q4
+cid  cname            numShipments
+---  ---------------  ------------
+  4  Russell Johnson             4
+  7  Robert Dean                 1
+
+Q5
+city              numCustomers  numShipments
+----------------  ------------  ------------
+Chicago                      1             1
+Hollywood                    4             4
+Huntington Beach             3             3
+Iowa City                    3             3
+Morristown                   1             1
+
+Q6
+state  SUM(amount*price)
+-----  -----------------
+CA               1317.68
+IL                164.95
+NJ                 45.49
+
+Q7
+pid  pname            numberOfTimesShipped  totalAmountShipped  totalValueShipped
+---  ---------------  --------------------  ------------------  -----------------
+  1  Swiss Chocolate                     4                  32            1055.68
+  2  Wooden Chair                        4                  51            2652.00
+  3  Teddy Bear                          1                   1               5.99
+  4  Chocolate Bar                       2                  35             138.25
+
+Q8
+pname          pname            pid  pid  numTogether
+-------------  ---------------  ---  ---  -----------
+Wooden Chair   Swiss Chocolate    2    1            1
+Chocolate Bar  Teddy Bear         4    3            1
+
+Q9
+pname            inventory
+---------------  ---------
+Swiss Chocolate         10
+Wooden Chair             8
+Chocolate Bar           12
+
+Q10
+pid  pname            price  numShipments  totalShippedAmount  avgShippedAmount
+---  ---------------  -----  ------------  ------------------  ----------------
+  3  Teddy Bear        5.99             1                   1            1.0000
+  1  Swiss Chocolate  32.99             4                  32            8.0000
