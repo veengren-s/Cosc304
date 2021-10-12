@@ -1,0 +1,30 @@
+ --QUESTION 1
+SELECT cname, CONCAT_WS(',',city,state) AS CityState
+From Customer
+WHERE city>'d'
+ORDER BY CityState
+
+--Question 2
+SELECT SUM(amount),COUNT(DISTINCT pid),COUNT(DISTINCT sid)
+FROM ShippedProduct
+
+--Question 3
+SELECT cname,address,pname,amount
+FROM Customer,Product,Shipment,ShippedProduct
+WHERE Customer.cid=Shipment.cid AND Shipment.sid = ShippedProduct.sid AND ShippedProduct.pid=Product.pid AND (state='IL' OR state='NJ' OR state='CA')
+
+--Question 4
+SELECT Customer.cid,cname,COUNT(*) AS numShipments
+FROM Customer JOIN Shipment ON Customer.cid = Shipment.cid
+WHERE address LIKE '%drive%'
+GROUP BY cid
+
+
+--Question 5
+SELECT DISTINCT city,COUNT(Customer.cid) AS numCustomers,COUNT(sid) AS numShipments
+FROM Customer JOIN Shipment ON Customer.cid=Shipment.cid
+GROUP BY city
+
+--Question 6
+
+
