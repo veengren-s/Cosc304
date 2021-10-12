@@ -39,4 +39,24 @@ WHERE Shipment.sid = ShippedProduct.sid AND ShippedProduct.pid=Product.pid AND S
 GROUP BY Product.pid
 
 --Question 8
+SELECT p1.pname,p2.pname,a.pid,b.pid,COUNT(a.sid)As numTogether
+FROM (ShippedProduct AS a JOIN ShippedProduct AS b ON b.sid=a.sid AND b.pid<>a.pid) JOIN Product AS p1 ON a.pid=p1.pid  JOIN Product AS p2 ON b.pid=p2.pid
+GROUP BY p1.pname,p2.pname,a.pid,b.pid
+HAVING a.pid>b.pid
+ORDER BY a.pid
+
+--Question 9
+SELECT pname,inventory
+FROM Product
+WHERE pname LIKE '%c%' AND inventory<(SELECT AVG(inventory) FROM Product)
+
+--Question 10
+SELECT DISTINCT ShippedProduct.pid, pname, price,COUNT(DISTINCT ShippedProduct.sid) AS numShipments,SUM(amount) AS totalShippedAmount,SUM(amount)/COUNT(DISTINCT ShippedProduct.sid) AS avgShippedAmount
+FROM Product,ShippedProduct
+WHERE Product.pid=ShippedProduct.pid
+GROUP BY ShippedProduct.pid
+HAVING AVG(amount)<=(SELECT MAX(amount)/COUNT(DISTINCT ShippedProduct.pid) FROM ShippedProduct)
+ORDER BY totalShippedAmount ASC
+
+
 
