@@ -55,7 +55,7 @@ SELECT DISTINCT ShippedProduct.pid, pname, price,COUNT(DISTINCT ShippedProduct.s
 FROM Product,ShippedProduct
 WHERE Product.pid=ShippedProduct.pid
 GROUP BY ShippedProduct.pid
-HAVING AVG(amount)<=(SELECT MAX(amount)/COUNT(DISTINCT ShippedProduct.pid) FROM ShippedProduct)
+HAVING AVG(amount)<=(SELECT AVG(amount) FROM ShippedProduct)
 ORDER BY totalShippedAmount ASC
 
 
